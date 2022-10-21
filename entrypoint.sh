@@ -67,8 +67,15 @@ echo "pre_release = $pre_release"
 # fetch tags
 git fetch --tags
 
-tagFmt="^v?[0-9]+\.[0-9]+\.[0-9]+$"
-preTagFmt="^v?[0-9]+\.[0-9]+\.[0-9]+(-$suffix\.[0-9]+)$"
+if $with_v then
+    echo "WITH_V: true"
+    tagFmt="^v?[0-9]+\.[0-9]+\.[0-9]+$"
+    preTagFmt="^v?[0-9]+\.[0-9]+\.[0-9]+(-$suffix\.[0-9]+)$"
+else
+    echo "WITH_V: false"
+    tagFmt="^[0-9]+\.[0-9]+\.[0-9]+$"
+    preTagFmt="^[0-9]+\.[0-9]+\.[0-9]+(-$suffix\.[0-9]+)$"
+fi
 
 # get latest tag that looks like a semver (with or without v)
 case "$tag_context" in
