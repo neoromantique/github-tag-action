@@ -67,7 +67,8 @@ echo "pre_release = $pre_release"
 # fetch tags
 git fetch --tags
 
-if $with_v then
+if $with_v 
+then
     echo "WITH_V: true"
     tagFmt="^v?[0-9]+\.[0-9]+\.[0-9]+$"
     preTagFmt="^v?[0-9]+\.[0-9]+\.[0-9]+(-$suffix\.[0-9]+)$"
